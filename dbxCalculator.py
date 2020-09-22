@@ -1,7 +1,12 @@
 #Funkce
 def calculateExps(rebirths, eventMultipliler):
 
-    result = 0.2 * rebirth + 1.0
+    result = 0
+
+    if result == 0:
+        result = 1
+    else:    
+        result = 0.2 * rebirth + 1.0
 
     if(eventMultipliler == 0 or None):
         return result
@@ -12,7 +17,10 @@ def calculateExps(rebirths, eventMultipliler):
 
 def nextRebirthExp(rebirths):
 
-    return 3000000 * rebirth - 1000000
+    if rebirths == 0:
+        return 2000000
+    else:
+        return 3000000 * rebirth - 1000000
 
 #Main
 rebirth = int(input("Enter the number of rebirths: "))

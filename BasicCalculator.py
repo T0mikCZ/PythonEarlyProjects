@@ -1,8 +1,11 @@
-num1 = int(input("Type your first number: "))
+try:
+    num1 = int(input("Type your first number: "))
 
-num2 = int(input("Type your second number: "))
+    num2 = int(input("Type your second number: "))
 
-mathOperator = input("Type a math operator (+-*/): ")
+    mathOperator = input("Type a math operator (+-*/): ")
+except:
+    print("Invalid input")
 
 if mathOperator == "+":
     print(str(num1) + "+" + str(num2) + "=" + str(num1 + num2))
