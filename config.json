@@ -1,5 +1,1 @@
-{
-    "food": 100,
-    "energy": 100,
-    "health": 100
-}
+{"food": 0, "energy": 100, "health": 100, "haveJob": false, "money": 100, "drink": 100}
