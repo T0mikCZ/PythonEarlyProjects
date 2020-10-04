@@ -1,5 +1,3 @@
-listCisel = [13,2]
-
 def max(numberList):
 
     maximum = numberList[0]
