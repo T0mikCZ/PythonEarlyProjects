@@ -18,6 +18,7 @@ print("2. Vypocita list cisel")
 print("3. Mocniny")
 print("4. Tabulka nasobilky")
 print("5. Prumer z listu cisel")
+print("6. Najde Min a Max cislo v listu")
 
 
 choice = input("Vyber cislo moznosti: ")
@@ -73,4 +74,22 @@ elif choice == "5":
 
     print(f"Prumer = {average}")
 
-    exit()
+elif choice == "6":
+
+    numlist = []
+
+    numberOfNumbers = int(input("Zadejte pocet cisel: "))
+
+    numlist = fillListWithInput(numberOfNumbers)
+
+    min = Math.min(numlist)
+    max = Math.max(numlist)
+
+    print(f"Zadali jste tyto cislo: {numlist}")
+
+    print(f"Nejmensi cislo = {min}")
+    print(f"Nejvetsi cislo = {max}")
+
+
+input()
+exit()
