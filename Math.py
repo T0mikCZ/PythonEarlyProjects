@@ -45,7 +45,7 @@ def CalculateList(numberList, operator):
             result = numberList[0]
             result -= numberList[i]
         return result
-    elif operator == "*":
+    elif operator == "*" or operator == "x":
         for i in range(len(numberList)):
             result = numberList[0]
             result *= numberList[i]
@@ -76,7 +76,7 @@ def calculate2Numbers(number1, number2, operator):
         return number1 + number2
     elif operator == "-":
         return number1 - number2
-    elif operator == "*":
+    elif operator == "*" or operator == "x":
         return number1 * number2
     elif operator == "/":
         return number1 / number2
