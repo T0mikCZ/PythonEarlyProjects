@@ -3,12 +3,12 @@ def calculateExps(rebirths, eventMultipliler):
 
     result = 0
 
-    if result == 0:
+    if rebirths == 0:
         result = 1
     else:    
         result = 0.2 * rebirth + 1.0
 
-    if(eventMultipliler == 0 or None):
+    if eventMultipliler == 0:
         return result
     else:
         return result * eventMultipliler
