@@ -1,10 +1,23 @@
 import Math
 
+#Functions
+def fillListWithInput(numberOfNumbers):
+    
+    numlist = []
+
+    for i in range(0,numberOfNumbers):
+
+        numlist.append(int(input(f"Zadejte {i + 1}. cislo: ")))
+
+    return numlist
+
+#Main
 print("Hlavni Menu")
 print("1. Vypocita 2 cisla jakoukoliv operaci")
 print("2. Vypocita list cisel")
 print("3. Mocniny")
 print("4. Tabulka nasobilky")
+print("5. Prumer z listu cisel")
 
 
 choice = input("Vyber cislo moznosti: ")
@@ -24,11 +37,9 @@ elif choice == "2":
     numberOfNumbers = int(input("Zadejte pocet cisel: "))
     operator = input("Zadejte operator: ")
 
-    for i in range(0,numberOfNumbers):
+    numlist = fillListWithInput(numberOfNumbers)
 
-        numlist.append(int(input(f"Zadejte {i + 1}. cislo: ")))
-
-    result = Math.CalculateList(numlist,operator)
+    result = Math.CalculateList(numlist, operator)
 
     print(f"Zadali jste tyto cislo: {numlist}")
 
@@ -47,5 +58,19 @@ elif choice == "4":
     size = int(input("Zadejte velikost: "))
 
     Math.mathTable(size)
+
+elif choice == "5":
+
+    numlist = []
+
+    numberOfNumbers = int(input("Zadejte pocet cisel: "))
+
+    numlist = fillListWithInput(numberOfNumbers)
+
+    average = Math.average(numlist)
+
+    print(f"Zadali jste tyto cislo: {numlist}")
+
+    print(f"Prumer = {average}")
 
     exit()
