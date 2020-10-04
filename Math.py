@@ -85,5 +85,11 @@ def calculate2Numbers(number1, number2, operator):
     else:
         return "Error: Wrong Operator"
 
-print(calculate2Numbers(13,5,"%"))
+def mathTable(size):
 
+    size +=1
+    for i in range(1,size):
+        for j in range(1,size):
+            print(i * j, end = " ")
+
+        print(f"X {i}")
