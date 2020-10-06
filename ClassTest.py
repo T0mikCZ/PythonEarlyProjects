@@ -7,4 +7,15 @@ redmi = Mobile("Redmi 7A", "MI11", 1.25, "11.0.4", "Blue" )
 
 print(student1.major)
 print(student2.major)
-print(f"Mobile name: {redmi.name}, Version {redmi.OS} {redmi.version}, Colour: {redmi.colour}")
+print(f"Mobile name: {redmi.name}, Version: {redmi.OS} {redmi.version}, Colour: {redmi.colour}")
+
+name = input("Zadejte jmeno mobilu: ")
+OS = input("Zadejte operacni system: ")
+weight = input("Zadejte vahu: ")
+version = input("Zadejte verzi mobilu: ")
+colour = input("Zadejte barvu mobilu: ")
+
+
+newPhone = Mobile(name, OS, weight, version, colour)
+
+print(f"Mobile name: {newPhone.name}, Version: {newPhone.OS} {newPhone.version}, Colour: {newPhone.colour}, Weight: {newPhone.weight}")
