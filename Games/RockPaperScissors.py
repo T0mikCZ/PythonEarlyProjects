@@ -84,6 +84,16 @@ def play(name, repeatTimes):
                 
                 print(f"The bot's choice was {randomChoice}")
                 print(f"The player {name} has won the round!")
+        elif choice == "emerald" or choice == "Emerald" or choice == "kakyoin" or choice == "Kakyoin":
+            if randomChoice == rock:
+                print(f"The bot's choice was {randomChoice}")
+                print("No one can jus deflect the emerald splash!")
+            elif randomChoice == paper:
+                print(f"The bot's choice was {randomChoice}")
+                print("My emeraldo sprasho has pierced you like nothing!")
+            else:
+                print(f"The bot's choice was {randomChoice}")
+                print("How did you cut my emeraldo sprasho in half?!")
         else:
             print("You have chosen the wrong answer. You have to type R,S or P")
 
