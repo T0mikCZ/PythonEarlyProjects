@@ -76,15 +76,24 @@ def generatePassword(lengthOfPassword):
 
     return password
 
+def displayPasswordsFromFile(fileName):
+    passFile = open(f"{fileName}.txt", "r")
+    passwords = passFile.readlines()
+    for line in passwords:
+        print(f"{line.strip()}")
+    passFile.close()
+    
+
 print("Main Menu")
 print("1. Generate password from a word")
 print("2. Random generated password")
+print("3. Displays all saved passwords")
 
-passwordMenuChoice = input("Chooce a generating type: ")
+passwordMenuChoice = input("Choose a generating type: ")
 
 startTime = time.time()
 
-if passwordMenuChoice == 1:
+if passwordMenuChoice == "1":
     print("Password Generator from a word!\n")
 
     inputPassword = input("Type a word you want to strength up: ")
@@ -103,8 +112,15 @@ elif passwordMenuChoice == "2":
 
     print(f"Your generated password: {colorama.Fore.CYAN}{generatePassword(passwordLength)}\n{colorama.Style.RESET_ALL}")
     print("Your password has been save to a file: PasswordLog.txt")
+elif passwordMenuChoice == "3":
+    print("Password Display!\n")
+
+    startTime = time.time()
+
+    displayPasswordsFromFile("PasswordLog")
+
 else:
-    print("Choice selected wrongly! You can only select between 1 and 2")
+    print("Choice selected wrongly! You can only select between 1 and 3")
 
 executionTime = (time.time() - startTime)
 
