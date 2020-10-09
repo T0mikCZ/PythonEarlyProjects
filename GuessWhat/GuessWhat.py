@@ -20,11 +20,13 @@ randomAnimal = random.choice(animals)
 #End of animals
 
 #Decalring items. It isn't working in a list
-phone = Item("Phone", "140g", "Plastic or Metallic", "Any", True)
-keyboard = Item("Keyboard", "540 or >1kg", "Plastic or Metallic", "Usually Black", True)
-chair = Item("Chair", "1kg or more", "Wooden", "Brown or White", False)
+phone = Item("Phone", "140g", "Plastic or Metallic", "Any", "Its like a mini computer", True)
+keyboard = Item("Keyboard", "540 or >1kg", "Plastic or Metallic", "Usually Black", "Used to smashing keys", True)
+chair = Item("Chair", "1kg or more", "Wooden", "Brown or White", "The best thing for a gamer, it can have wheels", False)
+fan   = Item("Fan", "1kg or more", "Plastic and Metallic", "Black or White", "Used to cool you down in hot days", True)
+car   = Item("Car", "1t or more", "Metallic")
 
-items = [phone, keyboard, chair]
+items = [phone, keyboard, chair, fan, car]
 randomItem = random.choice(items)
 #End of items
 
