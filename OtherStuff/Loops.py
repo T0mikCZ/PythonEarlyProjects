@@ -9,7 +9,7 @@ def pyramida(velikost):
 
 def lidlPyramida(velikost):
     for i in range(0,velikost):
-        for j in range(1,i):
+        for _ in range(1,i):
             print("*")
         print()
 print(pyramida(5))
@@ -24,7 +24,7 @@ def raiseToPower(num, powNum):
     result = 1
     result2 = num**powNum
     
-    for i in range(powNum):
+    for _ in range(powNum):
         result *= num
     
     #return result
