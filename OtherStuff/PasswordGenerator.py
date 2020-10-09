@@ -12,7 +12,7 @@ def makePasswordStronger(password):
     modPassword = ""
 
     randomChoice = random.randint(1,2)
-    randomSymbol = random.choice(["!","@","#","$","%","&","_",":",":","'","/","~"])
+    randomSymbol = random.choice(["!","@","#","$","%","&","_",":",";","'","/","~","?",",","."])
     randomPassNumber = random.randint(100,10000)
 
     if randomPassNumber == 123 or randomPassNumber == 1234 or randomPassNumber == 12345:
