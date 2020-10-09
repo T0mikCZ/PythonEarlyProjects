@@ -19,11 +19,14 @@ animals = [wolf, dog, deer, bear, guineaPig, pig, frog, ape, turtle, snake, dio]
 randomAnimal = random.choice(animals)
 #End of animals
 
-phone = Item("Phone", 140, "Plastic or Metallic", "Any color")
+#Decalring items. It isn't working in a list
+phone = Item("Phone", "140g", "Plastic or Metallic", "Any", True)
+keyboard = Item("Keyboard", "540 or >1kg", "Plastic or Metallic", "Usually Black", True)
+chair = Item("Chair", "1kg or more", "Wooden", "Brown or White", False)
 
-items = [phone]
+items = [phone, keyboard, chair]
 randomItem = random.choice(items)
-
+#End of items
 
 print("Main Menu")
 print("1. Guess Animals")
@@ -53,18 +56,18 @@ while True:
             print("Your guess is wrong/n")  
     elif mainChoice == "2":
         print("You are guessing an item\n")
-        print(f"The item is a {randomAnimal.animalClass}")
-        print(f"The animal is {randomAnimal.color}")
-        if randomAnimal.hasCoat:  
-            print("The animal has a coat")
+        print(f"The item weights {randomItem.weight}")
+        print(f"The item is {randomItem.material}")
+        if randomItem.isElectronic:  
+            print("The item is electronic")
         else:
-            print("the animal hasn't got a coat")
-        print(f"The animal is making a {randomAnimal.animalSound} sound\n")
+            print("The item isn't")
+        print(f"The item has a {randomItem.color} color\n")
 
-        guessChoice = input("Guess the animal: ")
+        guessChoice = input("Guess the item: ")
 
-        if guessChoice == randomAnimal.name:
-            print(f"You have guessed the animal\nThe animal was a {randomAnimal.name}")
+        if guessChoice == randomItem.name:
+            print(f"You have guessed the item\nThe item was a {randomItem.name}")
             break
         else:
             print("Your guess is wrong/n")  
