@@ -81,7 +81,7 @@ def displayPasswordsFromFile(fileName):
     passwords = passFile.readlines()
 
     for i,line in enumerate(passwords):
-        print(f"{i+1}.{line.strip()}")
+        print(f"{colorama.Fore.CYAN}{i+1}.{line.strip()}{colorama.Style.RESET_ALL}")
         
     passFile.close()
 
