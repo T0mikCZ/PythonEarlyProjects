@@ -65,8 +65,6 @@ def generatePassword(lengthOfPassword):
 
     return password
 
-
-
 print("Main Menu")
 print("1. Generate password from a word")
 print("2. Random generated password")
