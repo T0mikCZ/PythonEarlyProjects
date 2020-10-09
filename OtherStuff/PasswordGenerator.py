@@ -1,7 +1,9 @@
 import random
 import colorama
+import time
 
 colorama.init(strip=False)
+
 
 def makePasswordStronger(password):
 
@@ -44,6 +46,15 @@ def generatePassword(lengthOfPassword):
 
     password = ""
 
+    if lengthOfPassword > 100 and lengthOfPassword < 1000:
+        print("Do you really want to have that large password? XD: ")
+        input
+    elif lengthOfPassword > 1000 and lengthOfPassword < 100000:
+        print("Are you fking kidding me with that length? ")
+        input()
+    elif lengthOfPassword > 1000000:
+        print("This is the last time i'm executing something that large")
+        input()
     for _ in range(0,lengthOfPassword):
 
         randomSymbols = random.choice(["!","@","#","$","%","&","_",":",";","'","/","~","?",",","."])
@@ -71,10 +82,14 @@ print("2. Random generated password")
 
 passwordMenuChoice = input("Chooce a generating type: ")
 
+startTime = time.time()
+
 if passwordMenuChoice == 1:
     print("Password Generator from a word!\n")
 
     inputPassword = input("Type a word you want to strength up: ")
+
+    startTime = time.time()
 
     print(f"Your generated password: {colorama.Fore.CYAN}{makePasswordStronger(inputPassword)}\n{colorama.Style.RESET_ALL}")
     print("Your password has been save to a file: PasswordLog.txt")
@@ -84,11 +99,16 @@ elif passwordMenuChoice == "2":
 
     passwordLength = int(input("Type a length of the password: "))
 
+    startTime = time.time()
+
     print(f"Your generated password: {colorama.Fore.CYAN}{generatePassword(passwordLength)}\n{colorama.Style.RESET_ALL}")
     print("Your password has been save to a file: PasswordLog.txt")
 else:
     print("Choice selected wrongly! You can only select between 1 and 2")
 
+executionTime = (time.time() - startTime)
+
+print(f"The time it took to execute the code: {colorama.Fore.RED}{executionTime}{colorama.Style.RESET_ALL}")
 
 input()
 exit()
