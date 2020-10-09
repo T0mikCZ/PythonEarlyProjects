@@ -46,8 +46,8 @@ def generatePassword(lengthOfPassword):
 
     for _ in range(0,lengthOfPassword):
 
-        randomSymbols = random.choice(["!","@","#","$","%","&","_",":",":","'","/","~"])
-        randomLetters = random.choice(["A","B","C","D","E","Z","W","B","Y","H","S","O"])
+        randomSymbols = random.choice(["!","@","#","$","%","&","_",":",";","'","/","~","?",",","."])
+        randomLetters = random.choice(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"])
         randomNumber = random.randint(0,9)
         randomChoice = random.randint(1,4)
 
@@ -58,7 +58,7 @@ def generatePassword(lengthOfPassword):
         elif randomChoice == 3:
             password += str(randomNumber)
         else:
-            password += randomLetters
+            password += randomLetters.upper()
             
     passLog.write(f"Password: {password}\n")
     passLog.close()
@@ -69,10 +69,9 @@ print("Main Menu")
 print("1. Generate password from a word")
 print("2. Random generated password")
 
-passwordMenuChoice = input("Choose generating type: ")
+passwordMenuChoice = input("Chooce a generating type: ")
 
-if passwordMenuChoice == "1":
-
+if passwordMenuChoice == 1:
     print("Password Generator from a word!\n")
 
     inputPassword = input("Type a word you want to strength up: ")
