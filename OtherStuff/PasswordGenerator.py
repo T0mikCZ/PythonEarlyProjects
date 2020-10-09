@@ -102,7 +102,7 @@ if passwordMenuChoice == "1":
     startTime = time.time()
 
     print(f"Your generated password: {colorama.Fore.CYAN}{makePasswordStronger(inputPassword)}\n{colorama.Style.RESET_ALL}")
-    print("Your password has been save to a file: PasswordLog.txt")
+    print("Your password has been saved to a file: PasswordLog.txt")
 
 elif passwordMenuChoice == "2":
     print("Random password generator!\n")
@@ -112,7 +112,7 @@ elif passwordMenuChoice == "2":
     startTime = time.time()
 
     print(f"Your generated password: {colorama.Fore.CYAN}{generatePassword(passwordLength)}\n{colorama.Style.RESET_ALL}")
-    print("Your password has been save to a file: PasswordLog.txt")
+    print("Your password has been saved to a file: PasswordLog.txt")
 elif passwordMenuChoice == "3":
     print("Password Display!\n")
 
