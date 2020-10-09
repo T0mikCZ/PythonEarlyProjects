@@ -79,10 +79,11 @@ def generatePassword(lengthOfPassword):
 def displayPasswordsFromFile(fileName):
     passFile = open(f"{fileName}.txt", "r")
     passwords = passFile.readlines()
-    for line in passwords:
-        print(f"{line.strip()}")
+
+    for i,line in enumerate(passwords):
+        print(f"{i+1}.{line.strip()}")
+        
     passFile.close()
-    
 
 print("Main Menu")
 print("1. Generate password from a word")
