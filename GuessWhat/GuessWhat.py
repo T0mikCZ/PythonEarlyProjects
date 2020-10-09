@@ -5,6 +5,8 @@ wolf = Animal("Wolf", "Mammal", "BARK")
 dog = Animal("Dog", "Mammal", "bark")
 deer = Animal("Deer", "Mammal", "bellow")
 bear = Animal("Bear", "Mammal", "Roar")
+guineaPig = Animal("Guinea Pig", "Rodent", "squiks")
+pig = Animal("Pig", "Mammal", "Snort")
 
 animals = [wolf, dog, deer,  bear]
 randomAnimal = random.choice(animals)
@@ -15,12 +17,18 @@ print("1. Guess Animals")
 
 mainChoice = input("Choose the option: ")
 
-if mainChoice == "1":
-    print("You are guessing an animal")
-    print(f"The animal is a {randomAnimal.animalClass}")
-    print(f"The animal is making a {randomAnimal.animalSound} sound")
+print("You are guessing an animal\n")
 
-    guessChoice = input("Guess the animal: ")
+while True:
 
-    if guessChoice == randomAnimal.name:
-        print("You have guessed the animal")
+    if mainChoice == "1":
+        print(f"The animal is a {randomAnimal.animalClass}")
+        print(f"The animal is making a {randomAnimal.animalSound} sound\n")
+
+        guessChoice = input("Guess the animal: ")
+
+        if guessChoice == randomAnimal.name:
+            print(f"You have guessed the animal\nThe animal was a {randomAnimal.name}")
+            break
+        else:
+            print("Your guess is wrong/n")  
