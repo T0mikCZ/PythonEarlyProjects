@@ -23,8 +23,8 @@ randomAnimal = random.choice(animals)
 phone = Item("Phone", "140g", "Plastic or Metallic", "Any", "Its like a mini computer", True)
 keyboard = Item("Keyboard", "540 or >1kg", "Plastic or Metallic", "Usually Black", "Used to smashing keys", True)
 chair = Item("Chair", "1kg or more", "Wooden", "Brown or White", "The best thing for a gamer, it can have wheels", False)
-fan   = Item("Fan", "1kg or more", "Plastic and Metallic", "Black or White", "Used to cool you down in hot days", True)
-car   = Item("Car", "1t or more", "Metallic")
+fan = Item("Fan", "1kg or more", "Plastic and Metallic", "Black or White", "Used to cool you down in hot days", True)
+car = Item("Car", "1t or more", "Metallic and plastic", "Any", "Fast Travel, but with rotating circles", True)
 
 items = [phone, keyboard, chair, fan, car]
 randomItem = random.choice(items)
