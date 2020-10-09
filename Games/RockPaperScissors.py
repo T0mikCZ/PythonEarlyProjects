@@ -16,7 +16,7 @@ def play(name, repeatTimes):
     playerWinCount = 0
     botWinCount = 0
 
-    #Check so its doesn't break the game
+    #Check so it doesn't break the game
     if repeatTimes <=0:
         print("The number of times you want to play has to be greater than 0")
         input()
@@ -24,6 +24,7 @@ def play(name, repeatTimes):
 
     print("You are playing: rock, paper, scissors!")
 
+    #While the number of times you want to repeat is higher than 0
     while repeatTimes > 0:
 
         randomChoice = random.choice(["R", "P", "S"])
