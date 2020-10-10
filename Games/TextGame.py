@@ -3,6 +3,9 @@ import json
 import time
 from JobClass import Job
 
+#def chooseJob(job, jobIndex, )
+
+
 #Variables
 mainChoice = "yes"
 
@@ -20,7 +23,13 @@ jobList.append(Job("Cashier", 20))
 jobList.append(Job("Politician", 75))
 #End of jobs
 
-currentjob = jobList[0]
+jsonFile = open("config.json", "r")
+config = json.load(jsonFile)
+
+jobIndex = config["jobIndex"]
+currentjob = jobList[jobIndex]
+
+jsonFile.close()
 
 #Main Loop
 while mainChoice == "yes" or mainChoice == "yes".capitalize:
@@ -62,6 +71,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 0
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -74,6 +84,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 1
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -86,6 +97,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 2
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -98,6 +110,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 3
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -110,6 +123,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 4
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -122,6 +136,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 5
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -134,6 +149,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 6
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -146,6 +162,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 7
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -158,6 +175,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 config["hasJob"] = True
                 config["currentJob"] = currentjob.jobName
+                config["jobIndex"] = 8
                 configFile =  open("config.json", "w")
 
                 json.dump(config, configFile)
@@ -180,6 +198,13 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                     print(f"You have worked for {hoursToWork} hours")
                     print(f"You have earned {job.jobSalary * hoursToWork}$")
+
+                    config["money"] += job.jobSalary * hoursToWork
+                    configFile =  open("config.json", "w")
+                    json.dump(config, configFile)
+
+                    configFile.close()      
+
                 else:
                     print("The number of hours has to be less than 8 and more than 0 hours you slaver")
 
