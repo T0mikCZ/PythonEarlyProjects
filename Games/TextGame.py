@@ -1,7 +1,7 @@
 import random
 import json
 import time
-from JobClass import Job
+from GameClass import Job, Food
 
 #def chooseJob(job, jobIndex)
 
@@ -20,8 +20,9 @@ def findJob(jobList, jobIndex):
 #Variables
 mainChoice = "yes"
 
-#Create job list
+#Create lists
 jobList = []
+foodList = []
 #Add Jobs to list
 jobList.append(Job("McDonald's Cook", 25, 5))
 jobList.append(Job("Programmer", 40, 10))
@@ -33,6 +34,14 @@ jobList.append(Job("Animator", 50, 20))
 jobList.append(Job("Cashier", 20, 5))
 jobList.append(Job("Politician", 75, 15))
 #End of jobs
+
+#Add food to list
+foodList.append(Food("Yogurt", 5, 1))
+foodList.append(Food("Hamburger", 30, 15))
+foodList.append(Food("Kebab", 60, 25))
+foodList.append(Food("McDonald small menu", 120, 40))
+foodList.append(Food("McDonald small menu", 250, 75))
+#End of food
 
 jsonFile = open("config.json", "r")
 config = json.load(jsonFile)
@@ -157,6 +166,10 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                 work(jobList, hoursToWork)
 
                 workChoice = input("Do you want to work more?: ")
+    elif gameChoice == "2":
+        def buy(itemList, itemIndex):
+            for i, item in enumerate(foodList):
+                print(f"{i+1}. {item.name}")
     mainChoice = input("Do you want to return to main menu?: ")
 
  
