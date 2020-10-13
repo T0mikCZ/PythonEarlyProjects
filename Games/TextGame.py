@@ -17,6 +17,48 @@ def findJob(jobList, jobIndex):
     json.dump(config, configFile)
 
     configFile.close()
+
+def findJobInIfs(jobChoice):
+
+    if jobChoice == "1":
+
+        findJob(jobList, 0)
+
+    elif jobChoice == "2":
+
+        findJob(jobList, 1)
+
+    elif jobChoice == "3":
+
+        findJob(jobList, 2)
+
+    elif jobChoice == "4":
+
+        findJob(jobList, 3)
+
+    elif jobChoice == "5":
+
+        findJob(jobList, 4)
+        
+    elif jobChoice == "6":
+
+        findJob(jobList, 5)
+
+    elif jobChoice == "7":
+
+        findJob(jobList, 6)                                         
+
+    elif jobChoice == "8":
+
+        findJob(jobList, 7)
+
+    elif jobChoice == "9":
+
+        findJob(jobList, 8)
+
+    else:
+        print("The selected choice is wrong!")
+
 #Variables
 mainChoice = "yes"
 
@@ -57,7 +99,8 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
     config = json.load(jsonFile)
 
     hasJob = config["hasJob"]
-    currentConfigJob = config["currentJob"]
+    jobIndex = config["jobIndex"]
+    currentConfigJob = jobList[jobIndex]
 
     print("Main Menu\n")
 
@@ -77,55 +120,21 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
     else:
         print("1. Find a job")
     print("2. Go to store")
+    print("3. Find a job")
 
     gameChoice = input("Choose an option: ")
 
     if gameChoice == "1":
         if not hasJob:
             print("You have to find a job!\n")
+
             for i, job in enumerate(jobList):
                 print(f"{i+1}. {job.jobName}")
-            
+        
             jobChoice = input("\nChoose a job you want to work at: ")
 
-            if jobChoice == "1":
+            findJobInIfs(jobChoice)
 
-                findJob(jobList, 0)
-
-            elif jobChoice == "2":
-
-                findJob(jobList, 1)
-
-            elif jobChoice == "3":
-
-                findJob(jobList, 2)
-
-            elif jobChoice == "4":
-
-                findJob(jobList, 3)
-
-            elif jobChoice == "5":
-
-                findJob(jobList, 4)
-                
-            elif jobChoice == "6":
-
-                findJob(jobList, 5)
-
-            elif jobChoice == "7":
-
-                findJob(jobList, 6)                                         
-
-            elif jobChoice == "8":
-
-                findJob(jobList, 7)
-
-            elif jobChoice == "9":
-
-                findJob(jobList, 8)
-
-            else:
-                print("The selected choice is wrong!")
         elif hasJob:
             def work(jobList, hoursToWork):
                 energy = config["energy"]
@@ -212,6 +221,19 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
             buy(foodList, foodIndex)
 
             storeBuyFoodChoice = input("Do you want to buy more food?: ")
+    elif gameChoice == "3":
+        if hasJob:
+            hasJob = False
+
+            print("You are changing your job!\n")
+            for i, job in enumerate(jobList):
+                print(f"{i+1}. {job.jobName}")
+        
+            jobChoice = input("\nChoose a job you want to work at: ")
+
+            findJobInIfs(jobChoice)
+        else:
+            print("You can't change a job when you haven't got any job :D")
     mainChoice = input("Do you want to return to main menu?: ")
 
  
