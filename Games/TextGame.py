@@ -40,7 +40,7 @@ foodList.append(Food("Yogurt", 5, 1))
 foodList.append(Food("Hamburger", 30, 15))
 foodList.append(Food("Kebab", 60, 25))
 foodList.append(Food("McDonald small menu", 120, 40))
-foodList.append(Food("McDonald small menu", 250, 75))
+foodList.append(Food("McDonald big menu", 250, 75))
 #End of food
 
 jsonFile = open("config.json", "r")
@@ -68,6 +68,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
     print("Money: " + str(config["money"]) + "$" +  "\n")
 
     energy = config["energy"]
+    money = config["money"]
 
     jsonFile.close()
 
@@ -151,6 +152,8 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                         config["money"] += job.jobSalary * hoursToWork
                         config["energy"] -= job.jobEnergy * hoursToWork
+                        config["food"] -= int((job.jobEnergy * hoursToWork) / 3)
+                        config["drink"] -= int((job.jobEnergy * hoursToWork) / 2)
                         configFile =  open("config.json", "w")
                         json.dump(config, configFile)
 
@@ -168,8 +171,47 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                 workChoice = input("Do you want to work more?: ")
     elif gameChoice == "2":
         def buy(itemList, itemIndex):
+            food = itemList[itemIndex]
+
+            if food.cost > money:
+                print(f"The food: {food.name} you want to buy is too expensive\nYou have {money}$")
+            else:
+                if food.name == "McDonald big menu" or food.name == "McDonald small menu":
+                    print(f"You have bought and ate {food.name}")
+
+                    config["money"] -= food.cost
+                    config["energy"] += food.bonus
+                    config["food"] += food.bonus
+                    config["drink"] += food.bonus
+
+                    configFile =  open("config.json", "w")
+                    json.dump(config, configFile)
+
+                    configFile.close()
+                else:
+                    print(f"You have bought and ate {food.name}")
+
+                    config["money"] -= food.cost
+                    config["energy"] += food.bonus
+                    config["food"] += food.bonus
+
+                    configFile =  open("config.json", "w")
+                    json.dump(config, configFile)
+
+                    configFile.close()
+
+        storeBuyFoodChoice = "yes"
+        while storeBuyFoodChoice == "yes" or storeBuyFoodChoice == "yes".capitalize:
+            print("\nYou are in store!\n")
+
             for i, item in enumerate(foodList):
-                print(f"{i+1}. {item.name}")
+                print(f"{i+1}. {item.name}, costs: {item.cost}$")
+            foodIndex = int(input("What do you want to buy? Input a nubmer of the item: "))
+            foodIndex -= 1
+
+            buy(foodList, foodIndex)
+
+            storeBuyFoodChoice = input("Do you want to buy more food?: ")
     mainChoice = input("Do you want to return to main menu?: ")
 
  
