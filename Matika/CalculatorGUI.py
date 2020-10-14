@@ -1,9 +1,12 @@
 import tkinter as tk
 
+#Main Window Config
+
 root = tk.Tk()
 root.title("Calculator")
 resultEntry = tk.Entry(root, width=35, borderwidth=5)
 resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+#Define button functions
 
 def buttonClick(number):
     current = resultEntry.get()
@@ -65,17 +68,22 @@ def buttonEqual():
 button1 = tk.Button(root, text="1", padx=40, pady=20, command=lambda: buttonClick(1))
 button2 = tk.Button(root, text="2", padx=40, pady=20, command=lambda: buttonClick(2))
 button3 = tk.Button(root, text="3", padx=40, pady=20, command=lambda: buttonClick(3))
+
 button4 = tk.Button(root, text="4", padx=40, pady=20, command=lambda: buttonClick(4))
 button5 = tk.Button(root, text="5", padx=40, pady=20, command=lambda: buttonClick(5))
 button6 = tk.Button(root, text="6", padx=40, pady=20, command=lambda: buttonClick(6))
+
 button7 = tk.Button(root, text="7", padx=40, pady=20, command=lambda: buttonClick(7))
 button8 = tk.Button(root, text="8", padx=40, pady=20, command=lambda: buttonClick(8))
 button9 = tk.Button(root, text="9", padx=40, pady=20, command=lambda: buttonClick(9))
+
 button0 = tk.Button(root, text="0", padx=40, pady=20, command=lambda: buttonClick(0))
+
 buttonAdd = tk.Button(root, text="+", padx=39, pady=20, command=buttonAdd)
 buttonMinus = tk.Button(root, text="-", padx=40, pady=20, command=buttonMinus)
 buttonMult = tk.Button(root, text="*", padx=40, pady=20, command=buttonMult)
 buttonDiv = tk.Button(root, text="/", padx=40, pady=20, command=buttonDiv)
+
 buttonEqual = tk.Button(root, text="=", padx=88, pady=20, command=buttonEqual)
 buttonClear = tk.Button(root, text="Clear", padx=79, pady=20, command=buttonClear)
 #Put the buttons on the screen
@@ -98,6 +106,7 @@ buttonAdd.grid(row=5,column=0)
 buttonMinus.grid(row=4,column=1)
 buttonMult.grid(row=4,column=2)
 buttonDiv.grid(row=6,column=0)
+
 buttonClear.grid(row=5,column=1, columnspan=2)
 buttonEqual.grid(row=6,column=1, columnspan=2)
 
