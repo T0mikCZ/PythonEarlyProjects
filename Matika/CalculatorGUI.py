@@ -5,8 +5,6 @@ import tkinter as tk
 root = tk.Tk()
 root.title("Calculator")
 root.iconbitmap("C:/Python/Matika/dio.ico")
-resultEntry = tk.Entry(root, width=35, borderwidth=5)
-resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 #Define button functions
 
 def buttonClick(number):
@@ -64,7 +62,10 @@ def buttonEqual():
         resultEntry.insert(0, float(globalNumber1 * globalNumber2))
     elif operator == "/":
         resultEntry.insert(0, globalNumber1 / globalNumber2)
-#Define Buttons
+#Define Buttons and entries
+
+resultEntry = tk.Entry(root, width=35, borderwidth=5)
+resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
 button1 = tk.Button(root, text="1", padx=40, pady=20, command=lambda: buttonClick(1))
 button2 = tk.Button(root, text="2", padx=40, pady=20, command=lambda: buttonClick(2))
