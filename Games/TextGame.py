@@ -141,7 +141,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
 
                 print(f"You have {energy} energy!")
 
-                if hoursToWork < 8 and hoursToWork > 0:
+                if hoursToWork <= 8 and hoursToWork > 0:
                     job = jobList[jobIndex]
                     if energy < 0 or (job.jobEnergy * hoursToWork) > energy:
 
@@ -169,7 +169,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                         configFile.close()
 
                 else:
-                    print("The number of hours has to be less than 8 and more than 0 hours you slaver")
+                    print("The number of hours has to be less than 9 and more than 0 hours you slaver")
 
             workChoice = "yes"
             while workChoice == "yes" or workChoice == "yes".capitalize:
@@ -181,9 +181,10 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
     elif gameChoice == "2":
         def buy(itemList, itemIndex):
             food = itemList[itemIndex]
+            money = config["money"]
 
-            if food.cost > money:
-                print(f"The food: {food.name} you want to buy is too expensive\nYou have {money}$")
+            if food.cost > money or money <= 0:
+                print(f"The food: {food.name}, you want to buy is too expensive\nYou have {money}$")
             else:
                 if food.name == "McDonald big menu" or food.name == "McDonald small menu":
                     print(f"You have bought and ate {food.name}")
