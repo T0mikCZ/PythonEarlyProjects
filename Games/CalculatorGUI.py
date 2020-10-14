@@ -16,17 +16,51 @@ def buttonClear():
     resultEntry.delete(0, tk.END)
 
 def buttonAdd():
-    number1 = int(resultEntry.get())
+    number1 = float(resultEntry.get())
     global globalNumber1 
+    global operator
+    operator = "+"
+    globalNumber1 = number1
+    resultEntry.delete(0, tk.END)
+
+def buttonMinus():
+    number1 = float(resultEntry.get())
+    global globalNumber1 
+    global operator
+    operator = "-"
+    globalNumber1 = number1
+    resultEntry.delete(0, tk.END)
+
+def buttonMult():
+    number1 = float(resultEntry.get())
+    global globalNumber1 
+    global operator
+    operator = "*"
+    globalNumber1 = number1
+    resultEntry.delete(0, tk.END)
+
+def buttonDiv():
+    number1 = float(resultEntry.get())
+    global globalNumber1 
+    global operator
+    operator = "/"
     globalNumber1 = number1
     resultEntry.delete(0, tk.END)
 
 def buttonEqual():
-    number2 = int(resultEntry.get())
+    number2 = float(resultEntry.get())
     global globalNumber2
     globalNumber2 = number2
     resultEntry.delete(0, tk.END)
-    resultEntry.insert(0, f"{globalNumber1}+{globalNumber2} = {globalNumber1 + globalNumber2}")
+
+    if operator == "+":
+        resultEntry.insert(0, float(globalNumber1 + globalNumber2))
+    elif operator == "-":
+        resultEntry.insert(0, float(globalNumber1 - globalNumber2))
+    elif operator == "*":
+        resultEntry.insert(0, float(globalNumber1 * globalNumber2))
+    elif operator == "/":
+        resultEntry.insert(0, globalNumber1 / globalNumber2)
 #Define Buttons
 
 button1 = tk.Button(root, text="1", padx=40, pady=20, command=lambda: buttonClick(1))
@@ -40,9 +74,9 @@ button8 = tk.Button(root, text="8", padx=40, pady=20, command=lambda: buttonClic
 button9 = tk.Button(root, text="9", padx=40, pady=20, command=lambda: buttonClick(9))
 button0 = tk.Button(root, text="0", padx=40, pady=20, command=lambda: buttonClick(0))
 buttonAdd = tk.Button(root, text="+", padx=39, pady=20, command=buttonAdd)
-buttonMinus = tk.Button(root, text="-", padx=39, pady=20, command=buttonAdd)
-buttonMult = tk.Button(root, text="*", padx=39, pady=20, command=buttonAdd)
-buttonDiv = tk.Button(root, text="/", padx=39, pady=20, command=buttonAdd)
+buttonMinus = tk.Button(root, text="-", padx=40, pady=20, command=buttonMinus)
+buttonMult = tk.Button(root, text="*", padx=40, pady=20, command=buttonMult)
+buttonDiv = tk.Button(root, text="/", padx=40, pady=20, command=buttonDiv)
 buttonEqual = tk.Button(root, text="=", padx=91, pady=20, command=buttonEqual)
 buttonClear = tk.Button(root, text="Clear", padx=79, pady=20, command=buttonClear)
 #Put the buttons on the screen
@@ -62,10 +96,10 @@ button9.grid(row=1,column=2)
 button0.grid(row=4,column=0)
 
 buttonAdd.grid(row=5,column=0)
-buttonMinus.grid(row=6,column=0)
-buttonMult.grid(row=6,column=1)
-buttonDiv.grid(row=6,column=2)
-buttonEqual.grid(row=5,column=1, columnspan=2)
-buttonClear.grid(row=4,column=1, columnspan=2)
+buttonMinus.grid(row=4,column=1)
+buttonMult.grid(row=4,column=2)
+buttonDiv.grid(row=6,column=0)
+buttonClear.grid(row=5,column=1, columnspan=2)
+buttonEqual.grid(row=6,column=1, columnspan=2)
 
 root.mainloop()
