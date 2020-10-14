@@ -4,6 +4,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Calculator")
+root.iconbitmap("C:/Python/Matika/dio.ico")
 resultEntry = tk.Entry(root, width=35, borderwidth=5)
 resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 #Define button functions
