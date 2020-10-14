@@ -2,7 +2,6 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Calculator")
-
 resultEntry = tk.Entry(root, width=40, borderwidth=5)
 resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
