@@ -2,7 +2,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Calculator")
-resultEntry = tk.Entry(root, width=40, borderwidth=5)
+resultEntry = tk.Entry(root, width=35, borderwidth=5)
 resultEntry.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
 def buttonClick(number):
@@ -76,7 +76,7 @@ buttonAdd = tk.Button(root, text="+", padx=39, pady=20, command=buttonAdd)
 buttonMinus = tk.Button(root, text="-", padx=40, pady=20, command=buttonMinus)
 buttonMult = tk.Button(root, text="*", padx=40, pady=20, command=buttonMult)
 buttonDiv = tk.Button(root, text="/", padx=40, pady=20, command=buttonDiv)
-buttonEqual = tk.Button(root, text="=", padx=91, pady=20, command=buttonEqual)
+buttonEqual = tk.Button(root, text="=", padx=88, pady=20, command=buttonEqual)
 buttonClear = tk.Button(root, text="Clear", padx=79, pady=20, command=buttonClear)
 #Put the buttons on the screen
 
