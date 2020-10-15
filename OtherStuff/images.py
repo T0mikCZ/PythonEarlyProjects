@@ -31,6 +31,8 @@ myImageLabel = tk.Label(image=sharingan1)
 #myRinneganLabel = tk.Label(image=rinnegan)
 #Displaying them
 
+status = tk.Label(root, text=f"Image 1 of {len(imageList)}", bd=1, relief=tk.SUNKEN, anchor=tk.E)
+
 myImageLabel.grid(row=0,column=0, columnspan=3)
 #mySharingan2Label.grid(row=0,column=1)
 #mySharingan3Label.grid(row=0,column=2)
@@ -57,6 +59,10 @@ def forward(imageIndex):
     myImageLabel.grid(row=0,column=0, columnspan=3)
     buttonBack.grid(row=1, column=0)
     buttonForward.grid(row=1, column=2) 
+    
+    #Update status bar
+    status = tk.Label(root, text=f"Image {imageIndex} of {len(imageList)}", bd=1, relief=tk.SUNKEN, anchor=tk.E)
+    status.grid(row=2, column=0, columnspan=3, sticky=tk.W+tk.E)
 
 def back(imageIndex):
     global myImageLabel
@@ -76,11 +82,16 @@ def back(imageIndex):
     buttonBack.grid(row=1, column=0)
     buttonForward.grid(row=1, column=2) 
 
+    #Update status bar
+    status = tk.Label(root, text=f"Image {imageIndex} of {len(imageList)}", bd=1, relief=tk.SUNKEN, anchor=tk.E)
+    status.grid(row=2, column=0, columnspan=3, sticky=tk.W+tk.E)
+
 buttonBack = tk.Button(root, text="<<<", command=back, state=tk.DISABLED)
 buttonExit = tk.Button(root, text="Exit Program", command=root.quit)
 buttonForward = tk.Button(root, text=">>>", command = lambda: forward(2))
 
 buttonBack.grid(row=1, column=0)
 buttonExit.grid(row=1, column=1)
-buttonForward.grid(row=1, column=2)
+buttonForward.grid(row=1, column=2, pady=10)
+status.grid(row=2, column=0, columnspan=3, sticky=tk.W+tk.E)
 root.mainloop()
