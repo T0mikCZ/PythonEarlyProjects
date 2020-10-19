@@ -285,6 +285,8 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                 print("You have found nothing!")
             else:
                 search(trashFoodList, randomIndex)
+    else:
+        print("Wrong choice!")
 
     mainChoice = input("Do you want to return to main menu?: ")
 
