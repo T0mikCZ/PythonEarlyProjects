@@ -65,6 +65,7 @@ mainChoice = "yes"
 #Create lists
 jobList = []
 foodList = []
+trashFoodList = []
 #Add Jobs to list
 jobList.append(Job("McDonald's Cook", 25, 5))
 jobList.append(Job("Programmer", 40, 10))
@@ -78,11 +79,17 @@ jobList.append(Job("Politician", 75, 15))
 #End of jobs
 
 #Add food to list
-foodList.append(Food("Yogurt", 5, 1))
+foodList.append(Food("Yogurt", 5, 3))
 foodList.append(Food("Hamburger", 30, 15))
 foodList.append(Food("Kebab", 60, 25))
 foodList.append(Food("McDonald small menu", 120, 40))
 foodList.append(Food("McDonald big menu", 250, 75))
+
+trashFoodList.append(Food("Spoiled Yogurt", 1, 1))
+trashFoodList.append(Food("Half eaten Hamburger", 3, 5))
+trashFoodList.append(Food("Smelly Kebab", 5, 10))
+trashFoodList.append(Food("Spoiled McDonald small menu", 10, 15))
+trashFoodList.append(Food("Spoiled McDonald big menu", 15, 20))
 #End of food
 
 jsonFile = open("config.json", "r")
@@ -121,6 +128,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
         print("1. Find a job")
     print("2. Go to store")
     print("3. Find a job")
+    print("4. Search Trash cans")
 
     gameChoice = input("Choose an option: ")
 
@@ -235,6 +243,49 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
             findJobInIfs(jobChoice)
         else:
             print("You can't change a job when you haven't got any job :D")
+    elif gameChoice == "4":
+        def search(itemList, itemIndex):
+            food = itemList[itemIndex]
+
+
+            if food.name == "McDonald big menu" or food.name == "McDonald small menu":
+                print(f"You have searched and ate {food.name}")
+
+                config["health"] -= food.cost
+                config["energy"] += food.bonus
+                config["food"] += food.bonus
+                config["drink"] += food.bonus
+
+                configFile =  open("config.json", "w")
+                json.dump(config, configFile)
+
+                configFile.close()
+            else:
+                print(f"You have searched and ate {food.name}")
+
+                config["health"] -= food.cost
+                config["energy"] += food.bonus
+                config["food"] += food.bonus
+
+                configFile =  open("config.json", "w")
+                json.dump(config, configFile)
+
+                configFile.close()
+
+        randomTrash = random.randint(1,2)
+        specialTrash = random.randint(1,2)
+        randomIndex = random.randint(0, len(trashFoodList))
+
+        print("You are searching trash cans!")
+
+        if randomTrash == 1:
+            print("You have found nothing!")
+        else:
+            if specialTrash == 1:
+                print("You have found nothing!")
+            else:
+                search(trashFoodList, randomIndex)
+
     mainChoice = input("Do you want to return to main menu?: ")
 
  
