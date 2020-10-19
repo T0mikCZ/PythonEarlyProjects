@@ -101,7 +101,7 @@ currentjob = jobList[jobIndex]
 jsonFile.close()
 
 #Main Loop
-while mainChoice == "yes" or mainChoice == "yes".capitalize:
+while "yes" in mainChoice or "Yes" in mainChoice or "YES" in mainChoice:
     jsonFile = open("config.json", "r")
     config = json.load(jsonFile)
 
@@ -180,7 +180,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                     print("The number of hours has to be less than 9 and more than 0 hours you slaver")
 
             workChoice = "yes"
-            while workChoice == "yes" or workChoice == "yes".capitalize:
+            while "yes" in workChoice or "Yes" in workChoice or "YES" in workChoice:
                 hoursToWork = int(input("How many hours do you want to work: "))
 
                 work(jobList, hoursToWork)
@@ -219,7 +219,7 @@ while mainChoice == "yes" or mainChoice == "yes".capitalize:
                     configFile.close()
 
         storeBuyFoodChoice = "yes"
-        while storeBuyFoodChoice == "yes" or storeBuyFoodChoice == "yes".capitalize:
+        while "yes" in storeBuyFoodChoice or "Yes" in storeBuyFoodChoice or "YES" in storeBuyFoodChoice:
             print("\nYou are in store!\n")
 
             for i, item in enumerate(foodList):
