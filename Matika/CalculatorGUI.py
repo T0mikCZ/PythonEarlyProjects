@@ -1,10 +1,8 @@
 import tkinter as tk
-from PIL import ImageTK, Image
 #Main Window Config
 
 root = tk.Tk()
 root.title("Calculator")
-root.iconbitmap("dio.ico")
 #Define button functions
 
 def buttonClick(number):

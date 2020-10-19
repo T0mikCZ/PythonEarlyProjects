@@ -18,7 +18,7 @@ def letterLoop(word):
     word = str(word)
 
     for letter in word:
-        print(letter + " ", end = " ")
+        print (letter + " ", end = " ")
 
 def raiseToPower(num, powNum):
     result = 1
