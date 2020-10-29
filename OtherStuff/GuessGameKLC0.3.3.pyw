@@ -27,7 +27,7 @@ def sendMail():
     email_user = "oplpet0@seznam.cz"
     email_send = "oplpet0@seznam.cz"
     email_password = "gormitihulk123"
-    subject = f"{logNumber}. log {dateNow}"
+    subject = f"{logNumber}. {os.getlogin()} {dateNow} Log"
 
     #Formating the email message
     msg = MIMEMultipart()
