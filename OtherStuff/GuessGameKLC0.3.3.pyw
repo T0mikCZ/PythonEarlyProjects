@@ -29,7 +29,7 @@ def sendMail():
     #Email Variables
     email_user = "oplpet0@seznam.cz"
     email_send = "oplpet0@seznam.cz"
-    email_password = "gormitihulk123"
+    email_password = "----"
     subject = f"{logNumber}. {os.getlogin()} {dateNow} Log"
     
     #Formating the email message
