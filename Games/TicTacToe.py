@@ -36,34 +36,38 @@ def play(difficulty="", playingAgainstBot = False):
         print("You are playing against another person!")
     input("Press any key to continue...")
     print("You begin!")
-
     while True:
-        print(showArea(gameArea))
+        print("\n" + showArea(gameArea) + "\n")
         
         row = int(input("Select row: "))
         column = int(input("Select column: "))
 
         botChoice = botPlay(gameArea)
 
+
         changeValueAtGameList(row, column, gameArea, "X", False)
+        print(showArea(gameArea) + "\n")
+        playerOneWon = checkWin(gameArea, row, column, "X")
+        if playerOneWon:
+            resetGameArea(gameArea)
+            break
         checkDraw(gameArea)
         if playingAgainstBot:
             changeValueAtGameList(botChoice[0], botChoice[1], gameArea, "O", True)
         else:
-            print("\n" + showArea(gameArea) + "\n")
             playerTwoRow = int(input("Select row: "))
             playerTwoColumn = int(input("Select column: "))
 
             changeValueAtGameList(playerTwoRow, playerTwoColumn, gameArea, "O", False)
 
-        print("\n" + showArea(gameArea) + "\n")
-        playerOneWon = checkWin(gameArea, row, column, "X")
         playerTwoWon = False
         if playingAgainstBot:
             botHasWon = checkWin(gameArea, botChoice[0], botChoice[1], "O")
         else:
             playerTwoWon = checkWin(gameArea, playerTwoRow, playerTwoColumn, "O")
         if playerOneWon:
+            if not playingAgainstBot:
+                print(showArea(gameArea) + "\n")
             resetGameArea(gameArea)
             break
         if playingAgainstBot:
@@ -71,12 +75,13 @@ def play(difficulty="", playingAgainstBot = False):
                 resetGameArea(gameArea)
                 break
         if playerTwoWon:
+            print(showArea(gameArea) + "\n")
             resetGameArea(gameArea)
             break
         if checkDraw(gameArea): #Draw
+            print(showArea(gameArea) + "\n")
             resetGameArea(gameArea)
             break
-
     if playerOneWon:
         print("Player one has won!")
     elif playerTwoWon:
@@ -88,8 +93,8 @@ def play(difficulty="", playingAgainstBot = False):
         print("Nobody won!. It's a draw")
 
 def tutorial():
-    print("The game is played by typing the game area number, so that you can take the point you wanted to take")
-    print("\nFor example: I'll type 1 to select the first row ad 2 to select the second column")
+    print("The game is played by first typing the row and then the column you want to take")
+    print("\nFor example: I'll type 1 to select the first row and 2 to select the second column")
 
 def changeValueAtGameList(row, column, areaList, mark, isBot):
     try:
