@@ -2,11 +2,14 @@ import os
 import random
 import discord
 import math
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = os.getenv("TOKEN")
 PF = os.getenv("PREFIX")
+
+bot = commands.Bot(command_prefix="plosim ")
 
 client = discord.Client()
 
@@ -17,14 +20,18 @@ async def on_ready():
         for member in guild.members:
             print(f"{member.name}")
 
+@bot.command()
+async def rozsudek(ctx):
+    await ctx.channel.send(f"je vinen!")
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
     if message.author.name == "Budha":
         await message.channel.send("ONO TO ZIJE POG")
-    if message.content == PF + "rozsudek":
-        await message.channel.send(f"{message.author.mention} je vinen kokotem")
+    #if message.content == PF + "rozsudek":
+    #    await message.channel.send(f"{message.author.mention} je vinen kokotem")
     if message.content == PF + "popisek luciana":
         if message.author.name == "kunkos152":
             await message.channel.send(f"LUCIANE TY SE ZNAS NEJVIC")
