@@ -3,7 +3,6 @@ DS_Store
 out
 log.log
 **/node_modules
-*.env
 *.pyc
 *.vsix
 **/.vscode/.ropeproject/**
@@ -42,3 +41,7 @@ debugpy*.log
 pydevd*.log
 nodeLanguageServer/**
 nodeLanguageServer.*/**
+.env
+.env.example
+.env.local
+.env.staging
