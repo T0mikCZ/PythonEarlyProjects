@@ -2,6 +2,7 @@ import math
 
 def decimalToBinary(cislo):
     binaryList = []
+    
 
     while cislo > 1:
         binaryList.append(math.floor(cislo%2))
@@ -23,5 +24,5 @@ def binaryToDecimal(binaryCislo):
         
     return desitkoveCislo
 
-print(decimalToBinary(4563456))
+print(decimalToBinary(2))
 print(binaryToDecimal(10001011010001000000000))
