@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
-LUCIAN_SERVER_ID = os.getenv("LUCIAN_SERVER_ID")
 PF = os.getenv("PREFIX")
 
 client = discord.Client()
