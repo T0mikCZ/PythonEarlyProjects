@@ -12,3 +12,17 @@ while True:
         else:
             print("Promenna x je sude cislo. Promenna \"s\" se nezmeni a pokracuje se od zacatku cyklu")
             continue
+
+
+
+#REFACTOR 20.01.2021
+
+def algorithm(num):
+    s = 0
+    if num == 0:
+        print(f"Promenna s = {s}")
+        return num
+    elif x % 2 == 1:
+        s += num
+    else:
+        algorithm(num)
